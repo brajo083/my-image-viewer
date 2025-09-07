@@ -25,6 +25,7 @@ const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
           tileSources: tileSources,
           
           // --- STABILITY & QUALITY FIXES ---
+          drawer: 'canvas', // Use the canvas renderer for better PNG transparency support
           crossOriginPolicy: 'Anonymous',   // Fixes S3 permissions for WebGL
           imageSmoothingEnabled: false,       // Fixes seams between tiles
           minPixelRatio: 0,                   // Prioritizes sharpness
