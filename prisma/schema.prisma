@@ -16,9 +16,7 @@ model Image {
   title       String
   description String?
   category    String
-  imageType   String   @default("DZI")
-  imageUrl    String?
-  dziUrl      String?
+  dziUrl      String   @unique // The URL for tiled DZI images
   createdAt   DateTime @default(now())
 }
 

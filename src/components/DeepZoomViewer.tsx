@@ -10,15 +10,12 @@ type DeepZoomViewerProps = {
 
 const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
   const viewerRef = useRef<HTMLDivElement>(null);
-  // --- FIX ---
-  // Use a ref to store the viewer instance. This ensures that the cleanup
-  // function can access the same instance that was created.
+  // Use a ref to store the viewer instance to prevent re-rendering loops.
   const osdViewerRef = useRef<OpenSeadragon.Viewer | null>(null);
 
   useEffect(() => {
     // Dynamically import OpenSeadragon only on the client-side.
     import('openseadragon').then((OpenSeadragonModule) => {
-      // Use the imported module
       const OpenSeadragon = OpenSeadragonModule.default;
       
       if (viewerRef.current && !osdViewerRef.current) { // Only initialize once
@@ -26,9 +23,11 @@ const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
           element: viewerRef.current,
           prefixUrl: 'https://openseadragon.github.io/openseadragon/images/',
           tileSources: tileSources,
-          crossOriginPolicy: 'Anonymous',
-          imageSmoothingEnabled: false,
-          minPixelRatio: 0,
+          
+          // --- STABILITY & QUALITY FIXES ---
+          crossOriginPolicy: 'Anonymous',   // Fixes S3 permissions for WebGL
+          imageSmoothingEnabled: false,       // Fixes seams between tiles
+          minPixelRatio: 0,                   // Prioritizes sharpness
           placeholderFillStyle: 'rgba(242, 242, 242, 1)',
           minZoomImageRatio: 0.1,
           maxZoomLevel: 100,
@@ -38,6 +37,7 @@ const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
           if (osdViewerRef.current && osdViewerRef.current.drawer) {
             const canvas = osdViewerRef.current.drawer.canvas as HTMLCanvasElement;
             if (canvas) {
+              // More forceful fix for tile seams/gaps
               canvas.style.imageRendering = 'pixelated';
             }
           }
@@ -52,7 +52,7 @@ const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
         osdViewerRef.current = null;
       }
     };
-  }, [tileSources]); // This dependency array is correct.
+  }, [tileSources]);
 
   return <div ref={viewerRef} className="h-full w-full"></div>;
 };
