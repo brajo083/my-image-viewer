@@ -1,103 +1,126 @@
-import Image from "next/image";
+"use client"; // We need client-side interactivity for the collapsible folders.
 
-export default function Home() {
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+
+// Define the shape of the data we expect for each image
+type Image = {
+  id: string;
+  title: string;
+  category: string;
+  createdAt: string;
+};
+
+// Define the shape for our grouped data
+type GroupedImages = {
+  [category: string]: Image[];
+};
+
+export default function HomePage() {
+  const [images, setImages] = useState<Image[]>([]);
+  const [groupedImages, setGroupedImages] = useState<GroupedImages>({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+
+  // Fetch images when the component mounts
+  useEffect(() => {
+    const fetchImages = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch('/api/images', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Failed to fetch images');
+        const data: Image[] = await response.json();
+        setImages(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchImages();
+  }, []);
+
+  // Group images by category whenever the images list changes
+  useEffect(() => {
+    const groups: GroupedImages = images.reduce((acc, image) => {
+      const category = image.category || 'Uncategorized';
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(image);
+      return acc;
+    }, {} as GroupedImages);
+    setGroupedImages(groups);
+  }, [images]);
+
+  // Function to toggle the visibility of a category's image list
+  const toggleCategory = (category: string) => {
+    setOpenCategories(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(category)) {
+        newSet.delete(category);
+      } else {
+        newSet.add(category);
+      }
+      return newSet;
+    });
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen bg-gray-50 p-8">
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-6 flex items-center justify-between border-b pb-4">
+          <h1 className="text-4xl font-bold text-gray-800">
+            Image Library
+          </h1>
+          <Link href="/upload" className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">
+            Upload New Image
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {isLoading ? (
+          <p className="text-center text-gray-500">Loading images...</p>
+        ) : Object.keys(groupedImages).length > 0 ? (
+          <div className="space-y-4">
+            {Object.entries(groupedImages).map(([category, images]) => (
+              <div key={category} className="rounded-lg border bg-white shadow-sm">
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="flex w-full items-center justify-between p-4 text-left"
+                >
+                  <h2 className="text-2xl font-semibold text-gray-700">{category}</h2>
+                  <span className={`transform transition-transform duration-200 ${openCategories.has(category) ? 'rotate-180' : 'rotate-0'}`}>
+                    &#9660;
+                  </span>
+                </button>
+                {openCategories.has(category) && (
+                  <div className="border-t p-4">
+                    <div className="space-y-3">
+                      {images.map(image => (
+                        <Link
+                          href={`/view/${image.id}`}
+                          key={image.id}
+                          className="block rounded-md p-3 transition-colors hover:bg-gray-100"
+                        >
+                          <h3 className="font-medium text-blue-700">{image.title}</h3>
+                          <p className="text-xs text-gray-400">
+                            Created on: {new Date(image.createdAt).toLocaleDateString()}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-gray-500">
+            <p>No images found.</p>
+          </div>
+        )}
+      </div>
+    </main>
   );
 }
+

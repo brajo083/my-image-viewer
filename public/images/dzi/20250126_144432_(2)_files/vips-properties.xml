@@ -1,0 +1,549 @@
+<?xml version="1.0"?>
+<image xmlns="http://www.vips.ecs.soton.ac.uk//dzsave" date="2025-09-06T14:51:10.405360+10" version="8.17.0">
+  <properties>
+    <property>
+      <name>width</name>
+      <value type="gint">159744</value>
+    </property>
+    <property>
+      <name>height</name>
+      <value type="gint">94208</value>
+    </property>
+    <property>
+      <name>bands</name>
+      <value type="gint">4</value>
+    </property>
+    <property>
+      <name>xoffset</name>
+      <value type="gint">0</value>
+    </property>
+    <property>
+      <name>yoffset</name>
+      <value type="gint">0</value>
+    </property>
+    <property>
+      <name>xres</name>
+      <value type="gdouble">4000</value>
+    </property>
+    <property>
+      <name>yres</name>
+      <value type="gdouble">4000</value>
+    </property>
+    <property>
+      <name>vips-loader</name>
+      <value type="VipsRefString">openslideload</value>
+    </property>
+    <property>
+      <name>slide-level</name>
+      <value type="gint">0</value>
+    </property>
+    <property>
+      <name>openslide.level-count</name>
+      <value type="VipsRefString">10</value>
+    </property>
+    <property>
+      <name>openslide.level[0].downsample</name>
+      <value type="VipsRefString">1</value>
+    </property>
+    <property>
+      <name>openslide.level[0].height</name>
+      <value type="VipsRefString">94208</value>
+    </property>
+    <property>
+      <name>openslide.level[0].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[0].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[0].width</name>
+      <value type="VipsRefString">159744</value>
+    </property>
+    <property>
+      <name>openslide.level[1].downsample</name>
+      <value type="VipsRefString">2</value>
+    </property>
+    <property>
+      <name>openslide.level[1].height</name>
+      <value type="VipsRefString">47104</value>
+    </property>
+    <property>
+      <name>openslide.level[1].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[1].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[1].width</name>
+      <value type="VipsRefString">79872</value>
+    </property>
+    <property>
+      <name>openslide.level[2].downsample</name>
+      <value type="VipsRefString">4</value>
+    </property>
+    <property>
+      <name>openslide.level[2].height</name>
+      <value type="VipsRefString">23552</value>
+    </property>
+    <property>
+      <name>openslide.level[2].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[2].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[2].width</name>
+      <value type="VipsRefString">39936</value>
+    </property>
+    <property>
+      <name>openslide.level[3].downsample</name>
+      <value type="VipsRefString">8</value>
+    </property>
+    <property>
+      <name>openslide.level[3].height</name>
+      <value type="VipsRefString">11776</value>
+    </property>
+    <property>
+      <name>openslide.level[3].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[3].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[3].width</name>
+      <value type="VipsRefString">19968</value>
+    </property>
+    <property>
+      <name>openslide.level[4].downsample</name>
+      <value type="VipsRefString">16</value>
+    </property>
+    <property>
+      <name>openslide.level[4].height</name>
+      <value type="VipsRefString">5888</value>
+    </property>
+    <property>
+      <name>openslide.level[4].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[4].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[4].width</name>
+      <value type="VipsRefString">9984</value>
+    </property>
+    <property>
+      <name>openslide.level[5].downsample</name>
+      <value type="VipsRefString">32</value>
+    </property>
+    <property>
+      <name>openslide.level[5].height</name>
+      <value type="VipsRefString">2944</value>
+    </property>
+    <property>
+      <name>openslide.level[5].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[5].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[5].width</name>
+      <value type="VipsRefString">4992</value>
+    </property>
+    <property>
+      <name>openslide.level[6].downsample</name>
+      <value type="VipsRefString">64</value>
+    </property>
+    <property>
+      <name>openslide.level[6].height</name>
+      <value type="VipsRefString">1472</value>
+    </property>
+    <property>
+      <name>openslide.level[6].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[6].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[6].width</name>
+      <value type="VipsRefString">2496</value>
+    </property>
+    <property>
+      <name>openslide.level[7].downsample</name>
+      <value type="VipsRefString">128</value>
+    </property>
+    <property>
+      <name>openslide.level[7].height</name>
+      <value type="VipsRefString">736</value>
+    </property>
+    <property>
+      <name>openslide.level[7].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[7].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[7].width</name>
+      <value type="VipsRefString">1248</value>
+    </property>
+    <property>
+      <name>openslide.level[8].downsample</name>
+      <value type="VipsRefString">256</value>
+    </property>
+    <property>
+      <name>openslide.level[8].height</name>
+      <value type="VipsRefString">368</value>
+    </property>
+    <property>
+      <name>openslide.level[8].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[8].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[8].width</name>
+      <value type="VipsRefString">624</value>
+    </property>
+    <property>
+      <name>openslide.level[9].downsample</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[9].height</name>
+      <value type="VipsRefString">184</value>
+    </property>
+    <property>
+      <name>openslide.level[9].tile-height</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[9].tile-width</name>
+      <value type="VipsRefString">512</value>
+    </property>
+    <property>
+      <name>openslide.level[9].width</name>
+      <value type="VipsRefString">312</value>
+    </property>
+    <property>
+      <name>openslide.mpp-x</name>
+      <value type="VipsRefString">0.25</value>
+    </property>
+    <property>
+      <name>openslide.mpp-y</name>
+      <value type="VipsRefString">0.25</value>
+    </property>
+    <property>
+      <name>openslide.quickhash-1</name>
+      <value type="VipsRefString">ffe950336ebacf162c0a22980fc9607ff245740b6b932fc0da2c0fcb925648c9</value>
+    </property>
+    <property>
+      <name>openslide.vendor</name>
+      <value type="VipsRefString">philips</value>
+    </property>
+    <property>
+      <name>philips.DICOM_BITS_ALLOCATED</name>
+      <value type="VipsRefString">8</value>
+    </property>
+    <property>
+      <name>philips.DICOM_BITS_STORED</name>
+      <value type="VipsRefString">8</value>
+    </property>
+    <property>
+      <name>philips.DICOM_DERIVATION_DESCRIPTION</name>
+      <value type="VipsRefString">TIFF</value>
+    </property>
+    <property>
+      <name>philips.DICOM_HIGH_BIT</name>
+      <value type="VipsRefString">7</value>
+    </property>
+    <property>
+      <name>philips.DICOM_LOSSY_IMAGE_COMPRESSION</name>
+      <value type="VipsRefString">01</value>
+    </property>
+    <property>
+      <name>philips.DICOM_LOSSY_IMAGE_COMPRESSION_METHOD</name>
+      <value type="VipsRefString">"PHILIPS_DP_1_0"</value>
+    </property>
+    <property>
+      <name>philips.DICOM_LOSSY_IMAGE_COMPRESSION_RATIO</name>
+      <value type="VipsRefString">"15"</value>
+    </property>
+    <property>
+      <name>philips.DICOM_PHOTOMETRIC_INTERPRETATION</name>
+      <value type="VipsRefString">RGB</value>
+    </property>
+    <property>
+      <name>philips.DICOM_PIXEL_REPRESENTATION</name>
+      <value type="VipsRefString">0</value>
+    </property>
+    <property>
+      <name>philips.DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.00025" "0.00025"</value>
+    </property>
+    <property>
+      <name>philips.DICOM_PLANAR_CONFIGURATION</name>
+      <value type="VipsRefString">0</value>
+    </property>
+    <property>
+      <name>philips.DICOM_SAMPLES_PER_PIXEL</name>
+      <value type="VipsRefString">3</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[0].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.00025" "0.00025"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[0].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0" "0" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[0].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">159233</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[0].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">0</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[0].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">93697</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[1].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.0005" "0.0005"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[1].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.0005" "0.0005" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[1].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">79615</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[1].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">1</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[1].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">46847</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[2].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.001" "0.001"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[2].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.002" "0.002" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[2].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">39805</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[2].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">2</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[2].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">23421</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[3].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.002" "0.002"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[3].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.004" "0.004" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[3].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">19901</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[3].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">3</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[3].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">11709</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[4].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.004" "0.004"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[4].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.008" "0.008" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[4].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">9949</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[4].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">4</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[4].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">5853</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[5].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.008" "0.008"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[5].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.016" "0.016" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[5].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">4973</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[5].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">5</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[5].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">2925</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[6].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.016" "0.016"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[6].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.032" "0.032" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[6].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">2485</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[6].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">6</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[6].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">1461</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[7].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.032" "0.032"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[7].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.064" "0.064" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[7].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">1241</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[7].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">7</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[7].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">729</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[8].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.064" "0.064"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[8].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.128" "0.128" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[8].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">619</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[8].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">8</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[8].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">363</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[9].DICOM_PIXEL_SPACING</name>
+      <value type="VipsRefString">"0.128" "0.128"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[9].PIIM_DP_PIXEL_DATA_REPRESENTATION_POSITION</name>
+      <value type="VipsRefString">"0.256" "0.256" "0"</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[9].PIIM_PIXEL_DATA_REPRESENTATION_COLUMNS</name>
+      <value type="VipsRefString">308</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[9].PIIM_PIXEL_DATA_REPRESENTATION_NUMBER</name>
+      <value type="VipsRefString">9</value>
+    </property>
+    <property>
+      <name>philips.PIIM_PIXEL_DATA_REPRESENTATION_SEQUENCE[9].PIIM_PIXEL_DATA_REPRESENTATION_ROWS</name>
+      <value type="VipsRefString">180</value>
+    </property>
+    <property>
+      <name>philips.PIM_DP_IMAGE_COLUMNS</name>
+      <value type="VipsRefString">159233</value>
+    </property>
+    <property>
+      <name>philips.PIM_DP_IMAGE_ROWS</name>
+      <value type="VipsRefString">93697</value>
+    </property>
+    <property>
+      <name>philips.PIM_DP_IMAGE_TYPE</name>
+      <value type="VipsRefString">WSI</value>
+    </property>
+    <property>
+      <name>philips.PIM_DP_SCANNER_RACK_PRIORITY</name>
+      <value type="VipsRefString">0</value>
+    </property>
+    <property>
+      <name>philips.PIM_DP_UFS_INTERFACE_VERSION</name>
+      <value type="VipsRefString">8</value>
+    </property>
+    <property>
+      <name>philips.UFS_IMAGE_PIXEL_TRANSFORMATION_METHOD</name>
+      <value type="VipsRefString">1</value>
+    </property>
+    <property>
+      <name>tiff.ResolutionUnit</name>
+      <value type="VipsRefString">inch</value>
+    </property>
+    <property>
+      <name>tiff.Software</name>
+      <value type="VipsRefString">Philips DP v1.1</value>
+    </property>
+    <property>
+      <name>slide-associated-images</name>
+      <value type="VipsRefString"></value>
+    </property>
+    <property>
+      <name>vips-sequential</name>
+      <value type="gint">1</value>
+    </property>
+  </properties>
+</image>
