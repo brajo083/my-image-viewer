@@ -1,47 +1,42 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import type OpenSeadragon from 'openseadragon'; // Import the type
 
+// Define the type for the props that this component will accept.
 type DeepZoomViewerProps = {
-  url: string;
+  tileSources: string;
 };
 
-const DeepZoomViewer = ({ url }: DeepZoomViewerProps) => {
+const DeepZoomViewer = ({ tileSources }: DeepZoomViewerProps) => {
   const viewerRef = useRef<HTMLDivElement>(null);
+  // --- FIX ---
+  // Use a ref to store the viewer instance. This ensures that the cleanup
+  // function can access the same instance that was created.
+  const osdViewerRef = useRef<OpenSeadragon.Viewer | null>(null);
 
   useEffect(() => {
-    let viewer: OpenSeadragon.Viewer | undefined;
-
-    // DEBUG: Log the URL being loaded
-    console.log('Loading DZI from URL:', url);
-
-    import('openseadragon').then((OpenSeadragon) => {
-      if (viewerRef.current && url) {
-        viewer = OpenSeadragon.default({
+    // Dynamically import OpenSeadragon only on the client-side.
+    import('openseadragon').then((OpenSeadragonModule) => {
+      // Use the imported module
+      const OpenSeadragon = OpenSeadragonModule.default;
+      
+      if (viewerRef.current && !osdViewerRef.current) { // Only initialize once
+        osdViewerRef.current = OpenSeadragon({
           element: viewerRef.current,
           prefixUrl: 'https://openseadragon.github.io/openseadragon/images/',
+          tileSources: tileSources,
           crossOriginPolicy: 'Anonymous',
           imageSmoothingEnabled: false,
           minPixelRatio: 0,
           placeholderFillStyle: 'rgba(242, 242, 242, 1)',
           minZoomImageRatio: 0.1,
           maxZoomLevel: 100,
-          tileSources: url,
         });
 
-        // DEBUG: Add error handling
-        viewer.addHandler('open-failed', (event) => {
-          console.error('Failed to open image:', event);
-        });
-
-        viewer.addHandler('tile-load-failed', (event) => {
-          console.error('Failed to load tile:', event.tile);
-        });
-
-        viewer.addHandler('open', () => {
-          console.log('Image opened successfully');
-          if (viewer && viewer.drawer) {
-            const canvas = viewer.drawer.canvas as HTMLCanvasElement;
+        osdViewerRef.current.addHandler('open', () => {
+          if (osdViewerRef.current && osdViewerRef.current.drawer) {
+            const canvas = osdViewerRef.current.drawer.canvas as HTMLCanvasElement;
             if (canvas) {
               canvas.style.imageRendering = 'pixelated';
             }
@@ -50,14 +45,17 @@ const DeepZoomViewer = ({ url }: DeepZoomViewerProps) => {
       }
     });
 
+    // Cleanup function to destroy the viewer when the component unmounts.
     return () => {
-      if (viewer) {
-        viewer.destroy();
+      if (osdViewerRef.current) {
+        osdViewerRef.current.destroy();
+        osdViewerRef.current = null;
       }
     };
-  }, [url]);
+  }, [tileSources]); // This dependency array is correct.
 
   return <div ref={viewerRef} className="h-full w-full"></div>;
 };
 
 export default DeepZoomViewer;
+
