@@ -11,9 +11,9 @@ export const runtime = 'nodejs';
  */
 export async function GET(
   request: Request,
-  { params }: { params: { imageId: string } }
+  { params }: { params: Promise<{ imageId: string }> }
 ) {
-  const { imageId } = params;
+  const { imageId } = await params;
 
   if (!imageId) {
     return NextResponse.json({ error: 'Image ID is required' }, { status: 400 });

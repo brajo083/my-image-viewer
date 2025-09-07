@@ -1,18 +1,13 @@
 import DeepZoomViewer from '@/components/DeepZoomViewer';
 import Link from 'next/link';
 
-// By exporting this constant, we ensure this page always runs on the Node.js runtime,
-// preventing the params-related error during server-side rendering.
 export const runtime = 'nodejs';
 
-// Define the shape of the data we expect from our API, including the new fields
 type Image = {
   id: string;
   title: string;
   description: string | null;
   category: string;
-  imageType: 'DZI' | 'SIMPLE';
-  imageUrl: string | null;
   dziUrl: string | null;
 };
 
@@ -32,12 +27,12 @@ async function getImageData(imageId: string): Promise<Image | null> {
 export default async function ViewPage({
   params,
 }: {
-  params: { imageId: string };
+  params: Promise<{ imageId: string }>;
 }) {
-  const { imageId } = params;
+  const { imageId } = await params;
   const image = await getImageData(imageId);
 
-  if (!image) {
+  if (!image || !image.dziUrl) {
     return (
       <main className="flex h-screen w-screen items-center justify-center bg-white">
         <div className="text-center">
@@ -46,21 +41,6 @@ export default async function ViewPage({
         </div>
       </main>
     );
-  }
-
-  // Determine the correct URL to use based on the image type
-  const viewerUrl = image.imageType === 'SIMPLE' ? image.imageUrl : image.dziUrl;
-
-  // Ensure we have a valid URL before rendering the viewer
-  if (!viewerUrl) {
-    return (
-       <main className="flex h-screen w-screen items-center justify-center bg-white">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600">Error</h1>
-          <p className="text-gray-700">Image record is missing a valid URL.</p>
-        </div>
-      </main>
-    )
   }
 
   return (
@@ -73,9 +53,8 @@ export default async function ViewPage({
         </Link>
       </div>
       <div className="relative z-0 h-full w-full border-2 border-gray-300">
-        <DeepZoomViewer imageType={image.imageType} url={viewerUrl} />
+        <DeepZoomViewer url={image.dziUrl} />
       </div>
     </main>
   );
 }
-
