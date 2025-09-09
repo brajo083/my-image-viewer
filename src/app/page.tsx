@@ -1,126 +1,77 @@
-"use client"; // We need client-side interactivity for the collapsible folders.
-
-import { useState, useEffect } from 'react';
+"use client";
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-// Define the shape of the data we expect for each image
 type Image = {
   id: string;
   title: string;
-  category: string;
-  createdAt: string;
+  description: string | null;
 };
 
-// Define the shape for our grouped data
-type GroupedImages = {
-  [category: string]: Image[];
-};
-
-export default function HomePage() {
+const HomePage = () => {
   const [images, setImages] = useState<Image[]>([]);
-  const [groupedImages, setGroupedImages] = useState<GroupedImages>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+  const [error, setError] = useState<string | null>(null);
 
-  // Fetch images when the component mounts
   useEffect(() => {
     const fetchImages = async () => {
       setIsLoading(true);
+      setError(null);
       try {
-        const response = await fetch('/api/images', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Failed to fetch images');
-        const data: Image[] = await response.json();
+        const response = await fetch('/api/images');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
         setImages(data);
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(`Failed to fetch images: ${err.message}`);
+        } else {
+          setError('An unknown error occurred.');
+        }
+        console.error("Error fetching images:", err);
       } finally {
         setIsLoading(false);
       }
     };
+
     fetchImages();
   }, []);
 
-  // Group images by category whenever the images list changes
-  useEffect(() => {
-    const groups: GroupedImages = images.reduce((acc, image) => {
-      const category = image.category || 'Uncategorized';
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(image);
-      return acc;
-    }, {} as GroupedImages);
-    setGroupedImages(groups);
-  }, [images]);
-
-  // Function to toggle the visibility of a category's image list
-  const toggleCategory = (category: string) => {
-    setOpenCategories(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(category)) {
-        newSet.delete(category);
-      } else {
-        newSet.add(category);
-      }
-      return newSet;
-    });
-  };
-
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6 flex items-center justify-between border-b pb-4">
-          <h1 className="text-4xl font-bold text-gray-800">
-            Image Library
-          </h1>
-          <Link href="/upload" className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">
-            Upload New Image
-          </Link>
-        </div>
+    <div className="container mx-auto p-4 md:p-8">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Image Viewer Gallery</h1>
+        <p className="text-lg text-gray-600 mt-2">Browse the collection of high-resolution images.</p>
+      </header>
 
-        {isLoading ? (
-          <p className="text-center text-gray-500">Loading images...</p>
-        ) : Object.keys(groupedImages).length > 0 ? (
-          <div className="space-y-4">
-            {Object.entries(groupedImages).map(([category, images]) => (
-              <div key={category} className="rounded-lg border bg-white shadow-sm">
-                <button
-                  onClick={() => toggleCategory(category)}
-                  className="flex w-full items-center justify-between p-4 text-left"
-                >
-                  <h2 className="text-2xl font-semibold text-gray-700">{category}</h2>
-                  <span className={`transform transition-transform duration-200 ${openCategories.has(category) ? 'rotate-180' : 'rotate-0'}`}>
-                    &#9660;
-                  </span>
-                </button>
-                {openCategories.has(category) && (
-                  <div className="border-t p-4">
-                    <div className="space-y-3">
-                      {images.map(image => (
-                        <Link
-                          href={`/view/${image.id}`}
-                          key={image.id}
-                          className="block rounded-md p-3 transition-colors hover:bg-gray-100"
-                        >
-                          <h3 className="font-medium text-blue-700">{image.title}</h3>
-                          <p className="text-xs text-gray-400">
-                            Created on: {new Date(image.createdAt).toLocaleDateString()}
-                          </p>
-                        </Link>
-                      ))}
-                    </div>
+      <main>
+        {isLoading && <p className="text-center text-gray-500">Loading images...</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
+        
+        {!isLoading && !error && images.length === 0 && (
+          <p className="text-center text-gray-500">No images found.</p>
+        )}
+
+        {!isLoading && !error && images.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {images.map((image) => (
+              <Link key={image.id} href={`/view/${image.id}`} passHref>
+                <div className="block border rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer h-full">
+                  <div className="p-6">
+                    <h2 className="text-2xl font-semibold text-gray-700 truncate">{image.title}</h2>
+                    <p className="text-gray-600 mt-2 text-base h-24 overflow-hidden overflow-ellipsis">{image.description || 'No description available.'}</p>
                   </div>
-                )}
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
-        ) : (
-          <div className="text-center text-gray-500">
-            <p>No images found.</p>
-          </div>
         )}
-      </div>
-    </main>
+      </main>
+    </div>
   );
-}
+};
+
+export default HomePage;
 
