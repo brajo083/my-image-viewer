@@ -14,14 +14,24 @@ type ImageViewerPageProps = {
 
 // This function fetches data directly from the database on the server.
 const fetchImage = async (id: string) => {
-  const image = await prisma.image.findUnique({
-    where: { id },
-  });
-  // If no image is found, this will trigger a standard 404 page.
-  if (!image) {
+  console.log(`[Vercel Log] Attempting to fetch image with ID: ${id}`);
+  try {
+    const image = await prisma.image.findUnique({
+      where: { id },
+    });
+    
+    if (!image) {
+      console.error(`[Vercel Log] Image with ID: ${id} NOT FOUND in database.`);
+      notFound();
+    }
+    
+    console.log(`[Vercel Log] Successfully fetched image data.`);
+    return image;
+  } catch (error) {
+    console.error(`[Vercel Log] CRITICAL: Prisma failed to connect or fetch data for ID: ${id}. Error:`, error);
+    // This will trigger a 404 page if there's a database error
     notFound();
   }
-  return image;
 };
 
 // This is the main page component.
@@ -34,7 +44,7 @@ const ImageViewerPage = async ({ params }: ImageViewerPageProps) => {
       <main className="flex h-screen w-screen items-center justify-center bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600">Error</h1>
-          <p className="text-gray-700">Image data is incomplete.</p>
+          <p className="text-gray-700">Image data is incomplete (dziUrl is missing).</p>
         </div>
       </main>
     );
